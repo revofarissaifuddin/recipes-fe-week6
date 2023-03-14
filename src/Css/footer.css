@@ -1,0 +1,19 @@
+.footer {
+    margin-top:20px;
+    padding: 50px;
+    background-color: #EFC81A;
+}
+.footer-end{
+    text-align: center;
+    background-color: #EFC81A;
+}
+.footer-end a{
+    text-decoration:none; 
+    color:inherit
+}
+section{
+    margin-bottom: 100px;
+}
+h1{
+    color: #2E266F;
+}

@@ -1,13 +1,12 @@
 import { useState } from "react";
-import axios from "../../Api/axios";
+import axios from "axios";
 import FooterMenu from "../../Component/Footer";
 import NavbarEdit from "../../Component/NavbarEdit";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-let token =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwOGE1NmQyLWZlNWMtNDFlZi1hYmIwLWY5MmMxYzQ5OWQyMiIsImVtYWlsIjoicmV2b0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6InJldm8iLCJwaG90byI6bnVsbCwidmVyaWYiOjEsIm90cCI6IjY0NzIyMSIsImNyZWF0ZV9hdCI6IjIwMjMtMDItMjZUMDg6NTc6NTguODQ2WiIsImlhdCI6MTY3ODcwMTcyNywiZXhwIjoxNjc4Nzg4MTI3fQ.XUNDgYFkT5six3qz9ogfTcEqF9ExLeEfh9jh_zZJWRA";
-let ADD_URL = "/recipes";
+let token = process.env.REACT_TOKEN;
+let ADD_URL = process.env.REACT_APP_API_BASEURL;
 export default function AddMenu() {
   const navigate = useNavigate();
   const [inputData, setInputData] = useState({
@@ -39,10 +38,10 @@ export default function AddMenu() {
     formData.append("photo", photo);
     console.log(formData);
     axios
-      .post(ADD_URL, formData, {
+      .post(`${ADD_URL}/recipes`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-          "Authorization": token,
+          "Authorization": `${token}`,
         },
       })
       .then((res) => {

@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import FooterMenu from "../../Component/Footer";
 import NavbarDetail from "../../Component/NavbarDetail";
-import axios from "../../Api/axios";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 
 let token =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwOGE1NmQyLWZlNWMtNDFlZi1hYmIwLWY5MmMxYzQ5OWQyMiIsImVtYWlsIjoicmV2b0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6InJldm8iLCJwaG90byI6bnVsbCwidmVyaWYiOjEsIm90cCI6IjY0NzIyMSIsImNyZWF0ZV9hdCI6IjIwMjMtMDItMjZUMDg6NTc6NTguODQ2WiIsImlhdCI6MTY3ODcwMTcyNywiZXhwIjoxNjc4Nzg4MTI3fQ.XUNDgYFkT5six3qz9ogfTcEqF9ExLeEfh9jh_zZJWRA";
-let DETAILMENU_URL = "/recipes/my-recipe";
-
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwOGE1NmQyLWZlNWMtNDFlZi1hYmIwLWY5MmMxYzQ5OWQyMiIsImVtYWlsIjoicmV2b0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6InJldm8iLCJwaG90byI6bnVsbCwidmVyaWYiOjEsIm90cCI6IjY0NzIyMSIsImNyZWF0ZV9hdCI6IjIwMjMtMDItMjZUMDg6NTc6NTguODQ2WiIsImlhdCI6MTY3ODc1MzE3MCwiZXhwIjoxNjc4ODM5NTcwfQ.DDkp-dkrmdFgaPgLhL46DA0LvtLPT9GP87R_S9qO68o";
+let DETAILMENU_URL = process.env.REACT_APP_API_BASEURL;
 export default function DetailMenu() {
   const { id } = useParams();
   const [data, setData] = useState();
@@ -16,7 +15,7 @@ export default function DetailMenu() {
   useEffect(() => {
       const getData = () => {
         axios
-          .get(DETAILMENU_URL + `/${id}`, {
+          .get(`${DETAILMENU_URL}/recipes/my-recipe/${id}`, {
             headers: {
               "Content-Type": "multipart/form-data",
               Authorization: token,

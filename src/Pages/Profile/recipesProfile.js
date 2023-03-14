@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FooterMenu from '../../Component/Footer';
 import NavbarDetail from '../../Component/NavbarDetail';
-import axios from "../../Api/axios";
+import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-let token ="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwOGE1NmQyLWZlNWMtNDFlZi1hYmIwLWY5MmMxYzQ5OWQyMiIsImVtYWlsIjoicmV2b0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6InJldm8iLCJwaG90byI6bnVsbCwidmVyaWYiOjEsIm90cCI6IjY0NzIyMSIsImNyZWF0ZV9hdCI6IjIwMjMtMDItMjZUMDg6NTc6NTguODQ2WiIsImlhdCI6MTY3ODcwMTcyNywiZXhwIjoxNjc4Nzg4MTI3fQ.XUNDgYFkT5six3qz9ogfTcEqF9ExLeEfh9jh_zZJWRA";
-let PROFILE_URL = "/recipes/my-recipe";
+let token ="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwOGE1NmQyLWZlNWMtNDFlZi1hYmIwLWY5MmMxYzQ5OWQyMiIsImVtYWlsIjoicmV2b0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6InJldm8iLCJwaG90byI6bnVsbCwidmVyaWYiOjEsIm90cCI6IjY0NzIyMSIsImNyZWF0ZV9hdCI6IjIwMjMtMDItMjZUMDg6NTc6NTguODQ2WiIsImlhdCI6MTY3ODc1MzE3MCwiZXhwIjoxNjc4ODM5NTcwfQ.DDkp-dkrmdFgaPgLhL46DA0LvtLPT9GP87R_S9qO68o";
+let PROFILE_URL = process.env.REACT_APP_API_BASEURL;
 export default function RecipesProfile() {
     const [selected, setSelected] = useState();
     const [data, setData] = useState();
@@ -26,7 +26,7 @@ export default function RecipesProfile() {
 
     const getData = () => {
         axios
-            .get(PROFILE_URL, {
+            .get(`${PROFILE_URL}/recipes/my-recipe`, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Authorization": token,

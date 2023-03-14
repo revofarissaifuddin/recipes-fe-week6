@@ -2,17 +2,19 @@ import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import FooterMenu from '../../Component/Footer'
 import NavbarMenu from '../../Component/NavbarMenu'
-import axios from "../../Api/axios";
-let SEARCH_URL = "/recipes/all-recipe";
+import axios from "axios";
+// import axios from "../../Api/axios";
+// let SEARCH_URL = "/recipes/all-recipe";
+let SEARCH_URL =  process.env.REACT_APP_API_BASEURL;
 export default function SearchMenu() {
-    const [query, setQuery] = useState('');
+    const [searchMenu, setSearchMenu] = useState('');
     const [data, setData] = useState();
     useEffect(() => {
         getData();
     }, []);
-
+    
     const getData = () => {
-    axios.get(SEARCH_URL).then((res)=>{
+    axios.get(`${SEARCH_URL}/recipes/all-recipe`).then((res)=>{
         console.log(res)
         setData(res.data.data)
         }).catch((err)=>{
@@ -21,7 +23,7 @@ export default function SearchMenu() {
     }
     return (
         <div>
-            <NavbarMenu/>
+            <NavbarMenu />
             <div className="container-fluid">
             <div className="row mt-5">
                 <div className="col-6">
@@ -40,7 +42,7 @@ export default function SearchMenu() {
                 <div className="col-6">
                     <div className="row row-cols-1 row-cols-md-1 ms-5">
                         <div className="input-group">
-                            <input type="text" onChange={(e)=>setQuery(e.target.value)} className="form-control me-5" placeholder="Telur Gulung" aria-label="Recipes" aria-describedby="button-addon2"/>
+                            <input type="text" onChange={event=>{setSearchMenu(event.target.value)}} className="form-control me-5" placeholder="Search..." aria-label="Recipes" aria-describedby="button-addon2"/>
                             <button className="btn btn-warning text-white ms-5 w-25" type="button">Search</button>
                         </div>
                     </div>
@@ -62,8 +64,14 @@ export default function SearchMenu() {
                 <div className="col-6">
                     <div className="list-group">
                             <div className="container-fluid text-center">
-                                {data?.map((item, index) => (
-                                <div key={index + 1} className="row row-cols-md-2 ms-5 mt-5">
+                                {data?.filter((item) => {
+                                    if (searchMenu === "") {
+                                        return item
+                                    } else if (item.title.toLowerCase().includes(searchMenu.toLowerCase())) {
+                                        return item
+                                    }
+                                }).map((item, index) => (
+                                <div key={index} className="row row-cols-md-2 ms-5 mt-5">
                                     <div className="col">
                                         <div className="row">
                                             <img src={item.photo} alt="" className="border-5 rounded-4"/> 

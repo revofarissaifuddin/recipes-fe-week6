@@ -13,13 +13,13 @@ function NavbarLandingPage() {
                 <div className=" collapse navbar-collapse" id="navbarNav">
                     <div className="collapse navbar-collapse col-md-6 col-12 row ps-5" id="navbarNav">
                         <div className="col-3 nav-item">
-                            <h5><Link to={'/'} className='Link'>Register</Link></h5>
+                            <h5><Link to={'/auth/register'} className='Link'>Register</Link></h5>
                         </div>
                         <div className="col-3 nav-item text-start">
-                            <h5><Link to={'/'} className='Link'>Login</Link></h5>
+                            <h5><Link to={'/auth/login'} className='Link'>Login</Link></h5>
                         </div>
                         <div className="col-3 nav-item text-start">
-                            <h5><Link to={'/'} className='Link'>Search Menu</Link></h5>
+                            <h5><Link to={'/menu/searchMenu'} className='Link'>Search Menu</Link></h5>
                         </div>
                     </div>
                     <div className="col-md-6  col-12 row">

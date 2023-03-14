@@ -1,9 +1,9 @@
 import { useState } from "react";
-import axios from "../../Api/axios";
+import axios from "axios";
 import { Link } from "react-router-dom";
 // import { toast } from "react-toastify";
 
-let LOGIN_URL = "/auth/login";
+let LOGIN_URL =process.env.REACT_APP_API_BASEURL;
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,7 +17,7 @@ export default function Login() {
 
     const handleApi = () => {
         // console.log({email,password})
-        axios.post(LOGIN_URL, {
+        axios.post(`${LOGIN_URL}/auth/login`, {
             email: email,
             password:password
         }).then(res => {

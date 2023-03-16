@@ -1,8 +1,8 @@
 
 import './App.css';
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 function App() {
-  const [ number,setNumber ]=useState(0)
+  const [ number ]=useState(0)
   return (
     <div className="App">
       <header className="App-header">

@@ -36,7 +36,7 @@ export default function register() {
                         <button className="btn btn-warning text-white shadow-none p-1 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Register Account</button>
                     </div>
                     <div className="my-2 mt-0 mb-5">
-                        <p className="text-left">Forgot Your Password?<Link to={'/auth/forgot-password'} className='Link text-warning'>Click Here</Link></p>
+                        <p className="text-left">Forgot Your Password?<Link to={'/auth/forgotPassword'} className='Link text-warning'>Click Here</Link></p>
                     </div>
                     <div className="my-2 mt-5">
                         <p className="text-center">Already have account?<Link to={'/auth/login'} className='Link text-warning'>Log in Here</Link></p>

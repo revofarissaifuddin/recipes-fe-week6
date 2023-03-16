@@ -1,7 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { Navbar } from "react-bootstrap";
 import "../../Css/navbarEdit.css"
+import avatar from "../../Images/user.png";
+
+function Avatar() {
+    return (
+        <img
+        className="avatar img-fluid rounded-circle align-items-center img-navbarMenu"
+        src={avatar}
+        alt="avatar"
+        width={100}
+        height={100}
+        />
+    );
+}
 export default function NavbarEdit() {
+    const name = localStorage.getItem("name");
+    const navigate = useNavigate();
+    const logout = () => {
+    localStorage.clear();
+    window.location.reload(false);
+    navigate("/home");
+    };
     return (
         <div>
             <div className="container-fluid">
@@ -29,12 +50,12 @@ export default function NavbarEdit() {
                                 <div className="row">
                                     <div className="col-5"></div>
                                     <div className="col-3 border-start border-3 border-warning ">
-                                        <img src="../../images/BiodataR.jpg" alt="" className="img-fluid rounded-circle align-items-center"/>
+                                        <Avatar/>
                                     </div>
                                     <div className="col-4">
-                                        <h6><Link to={'/profile/detailProfile'} className='Link'>users</Link></h6>
-                                        <h6 className="fw-bolder"><Link to={'/'} className='Link'>Logout</Link></h6>
-                                    </div>
+                                        <h6><Link to={'/profile/detailProfile'} className='Link'>{name?name:"Users"}</Link></h6>
+                                        <h6>{name && <button  variant="text" className='border-0 bg-white text-start' varian onClick={()=>logout()}><strong>logout</strong></button>}</h6>
+                                </div>
                                 </div>
                             </div>
                         </div>

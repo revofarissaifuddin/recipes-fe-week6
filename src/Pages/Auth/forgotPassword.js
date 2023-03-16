@@ -24,9 +24,9 @@ export default function forgotPassword() {
                         <button className="btn btn-warning text-white shadow-none p-1 w-100">Send OTP</button>
                     </div>
                 <div className="my-2">
-                    <p className="text-left">Login instead?<Link to={'/home'} className='Link text-warning'>Click here</Link></p>
+                    <p className="text-left">Login instead?<Link to={'/auth/login'} className='Link text-warning'>Click here</Link></p>
                 </div>
-            </div>
+            </div> 
     </div>
     )
 }

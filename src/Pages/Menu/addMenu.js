@@ -5,8 +5,9 @@ import NavbarEdit from "../../Component/NavbarEdit";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-let token = process.env.REACT_TOKEN;
-let ADD_URL = process.env.REACT_APP_API_BASEURL;
+let token =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwOGE1NmQyLWZlNWMtNDFlZi1hYmIwLWY5MmMxYzQ5OWQyMiIsImVtYWlsIjoicmV2b0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6InJldm8iLCJwaG90byI6bnVsbCwidmVyaWYiOjEsIm90cCI6IjY0NzIyMSIsImNyZWF0ZV9hdCI6IjIwMjMtMDItMjZUMDg6NTc6NTguODQ2WiIsImlhdCI6MTY3ODc1MzE3MCwiZXhwIjoxNjc4ODM5NTcwfQ.DDkp-dkrmdFgaPgLhL46DA0LvtLPT9GP87R_S9qO68o";
+let ADD_URL = process.env.REACT_APP_BASE_URL;
 export default function AddMenu() {
   const navigate = useNavigate();
   const [inputData, setInputData] = useState({

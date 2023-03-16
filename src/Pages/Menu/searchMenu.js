@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import FooterMenu from '../../Component/Footer'
 import NavbarMenu from '../../Component/NavbarMenu'
 import axios from "axios";
-// import axios from "../../Api/axios";
-// let SEARCH_URL = "/recipes/all-recipe";
-let SEARCH_URL =  process.env.REACT_APP_API_BASEURL;
+
+
+let SEARCH_URL = process.env.REACT_APP_BASE_URL;
 export default function SearchMenu() {
     const [searchMenu, setSearchMenu] = useState('');
+    const [sortMenu] = useState('DESC')
     const [data, setData] = useState();
     useEffect(() => {
         getData();
@@ -21,6 +22,24 @@ export default function SearchMenu() {
             console.log(err)
         })
     }
+    function newRecipes() {
+    axios.get(`${SEARCH_URL}/recipes/all-recipe/?sort=`+ sortMenu).then((res) => {
+        console.log(res)
+        setData(res.data.data)
+    }).catch((err) => {
+        console.log(err)
+    })
+    }
+    function searchMenuRecipes() {
+        axios.get(`${SEARCH_URL}/recipes/all-recipe/recipes?search=` + searchMenu)
+        .then((res) => {
+        console.log(res)
+        setData(res.data.data)
+    }).catch((err) => {
+        console.log(err)
+    })
+    }
+
     return (
         <div>
             <NavbarMenu />
@@ -43,7 +62,7 @@ export default function SearchMenu() {
                     <div className="row row-cols-1 row-cols-md-1 ms-5">
                         <div className="input-group">
                             <input type="text" onChange={event=>{setSearchMenu(event.target.value)}} className="form-control me-5" placeholder="Search..." aria-label="Recipes" aria-describedby="button-addon2"/>
-                            <button className="btn btn-warning text-white ms-5 w-25" type="button">Search</button>
+                            <button onClick={(e) => searchMenuRecipes(e)} className="btn btn-warning text-white ms-5 w-25" type="button">Search</button>
                         </div>
                     </div>
                 </div>
@@ -52,7 +71,7 @@ export default function SearchMenu() {
             <div className="row mt-3"> 
                 <div className="col-4">
                     <div className="row row-cols-1 row-cols-md-4 ms-5">
-                        <div className="col"><button className="btn btn-sm bg-warning text-white w-100">New</button></div>
+                        <div className="col"><button  onClick={(e) => newRecipes(e)}  className="btn btn-sm bg-warning text-white w-100">New</button></div>
                         <div className="col"><button className="btn btn-sm bg-warning text-white w-100">Popular</button></div>
                         <div className="col"><button className="btn btn-sm bg-success text-white w-100">Vegetarian</button></div>
                         <div className="col"><button className="btn btn-sm bg-success text-white w-100">Breakfast</button></div>
@@ -69,7 +88,7 @@ export default function SearchMenu() {
                                         return item
                                     } else if (item.title.toLowerCase().includes(searchMenu.toLowerCase())) {
                                         return item
-                                    }
+                                    } 
                                 }).map((item, index) => (
                                 <div key={index} className="row row-cols-md-2 ms-5 mt-5">
                                     <div className="col">
@@ -103,12 +122,10 @@ export default function SearchMenu() {
                                     </div>
                                     ))}
                                 </div>
-                                
+                        </div>
                     </div>
                 </div>
-
                 
-            </div>
             
             <div className="controler mt-5">
                 <nav aria-label="Page navigation example">
@@ -119,7 +136,7 @@ export default function SearchMenu() {
                         </li>
                     </ul>
                 </nav>
-        </div>
+            </div>
             </div>
             <FooterMenu/>
         </div>

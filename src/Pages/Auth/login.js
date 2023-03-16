@@ -1,37 +1,28 @@
 import { useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-// import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { Link,useNavigate } from "react-router-dom";
+import { loginUser } from "../../Storages/Actions/auth";
 
-let LOGIN_URL =process.env.REACT_APP_API_BASEURL;
 export default function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    console.log({ email, password });
-    const handleEmail = (e) => {
-        setEmail(e.target.value)
-    }
-    const handlePassword = (e) => {
-        setPassword(e.target.value)
-    };
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
 
-    const handleApi = () => {
-        // console.log({email,password})
-        axios.post(`${LOGIN_URL}/auth/login`, {
-            email: email,
-            password:password
-        }).then(res => {
-        console.log(res.data)
-        alert('success')
-        })
-        .catch(err => {
-            alert('service error')
-            console.log(err)
-        })
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const postData = (e) =>{
+        e.preventDefault()
+        console.log(email)
+        console.log(password)
+        let data = {
+            email, password
+        }
+        dispatch(loginUser(data,navigate))
     }
+
     return (
         <div className="container-fluid" id="login-page">
-        <div className="col ">
+        <div className="col-lg-6 position-absolute top-50 start-50 translate-middle">
             <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8 p-5 w-50 text-center">
                     <h3 className="text-warning">Recipe...</h3>
@@ -42,26 +33,26 @@ export default function Login() {
                 </div>
             </div>
                 <div className='row justify-content-center align-items-center'>
-                    <div className='w-50'>
-                        <form className="mt-5">
-                            <div className="mb-3">
-                                <label className="form-label" >Email</label>
-                                <input type="text" value={email} onChange={handleEmail} className="form-control" aria-describedby="emailHelp" placeholder="Email address"/>
-                            </div>
-                            <div className="mb-3">
-                                <label className="form-label">password</label>
-                                <input type="password" value={password} onChange={handlePassword} className="form-control" placeholder="password"/>
-                            </div>
-                            <div className="mb-3 form-check">
-                                <input type="checkbox" className="form-check-input"/>
-                                <label className="form-check-label">I agree to terms & conditions</label>
-                            </div>
-                            <div className="mb-3">
-                                <button onClick={handleApi} className="btn btn-warning text-white shadow-none p-1 w-100">Login</button>
-                            </div>
-                        </form>
-                    </div>
-            </div>
+                <div className='w-50'>
+                    <form onSubmit={postData} className="mt-5">
+                        <div className="mb-3">
+                            <label className="form-label" >Email</label>
+                            <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} className="form-control" placeholder="email"/>
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">password</label>
+                            <input type="password" className='form-control' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="password"/>
+                        </div>
+                        <div className="mb-3 form-check">
+                            <input type="checkbox" className="form-check-input"/>
+                            <label className="form-check-label">I agree to terms & conditions</label>
+                        </div>
+                        <div className="mb-3">
+                            <button type="submit" className="btn btn-warning text-white shadow-none p-1 w-100">Login</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
             <div className="my-2 mt-5">
                 <p className="text-center">Don't have an account?<Link to={'/auth/register'} className='Link text-warning'>Sign up</Link></p>
             </div>

@@ -1,11 +1,30 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Nav from "react-bootstrap/Nav";
+import { Link, useNavigate } from 'react-router-dom'
+import { Navbar } from "react-bootstrap";
+import avatar from "../../Images/user.png";
 export default function NavbarDetail() {
+    const name = localStorage.getItem("name")
+    const navigate = useNavigate()
+    const logout = () => {
+    localStorage.clear()
+    window.location.reload(false)
+    navigate('/home')
+    }
+    function Avatar() {
+        return (
+            <img
+            className="avatar img-fluid rounded-circle align-items-center img-navbarMenu"
+            src={avatar}
+            alt="avatar"
+            width={100}
+            height={100}
+            />
+        );
+    }
     return (
         <div>
             <div className="container-fluid">
-            <Nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <Navbar className="navbar navbar-expand-lg bg-body-tertiary">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -27,19 +46,19 @@ export default function NavbarDetail() {
                         <div className="col-4 ">
                             <div className="row">
                                 <div className="col-5"></div>
-                                <div className="col-3 border-start border-3 border-warning ">
-                                    <img src="../../images/BiodataR.jpg" alt="" className="img-fluid rounded-circle align-items-center img-navbarDetail"/>
-                                </div>
+                                    <div className="col-3 border-start border-3 border-warning ">
+                                        <Avatar/>
+                                    </div>
                                 <div className="col-4">
-                                    <h6><Link to={'/'} className='Link'>users</Link></h6>
-                                    <h6 className="fw-bolder"><Link to={'/'} className='Link'>Logout</Link></h6>
+                                    <h6><Link to={'/profile/detailProfile'} className='Link'>{name?name:"Users"}</Link></h6>
+                                    <h6>{name && <button  variant="text" className='border-0 bg-white text-start' varian onClick={()=>logout()}><strong>logout</strong></button>}</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </Nav>
+            </Navbar>
             </div>
         </div>
     )

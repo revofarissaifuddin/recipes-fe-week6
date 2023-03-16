@@ -3,11 +3,11 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import FooterMenu from "../../Component/Footer";
 import NavbarDetail from "../../Component/NavbarDetail";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 let token =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwOGE1NmQyLWZlNWMtNDFlZi1hYmIwLWY5MmMxYzQ5OWQyMiIsImVtYWlsIjoicmV2b0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6InJldm8iLCJwaG90byI6bnVsbCwidmVyaWYiOjEsIm90cCI6IjY0NzIyMSIsImNyZWF0ZV9hdCI6IjIwMjMtMDItMjZUMDg6NTc6NTguODQ2WiIsImlhdCI6MTY3ODc1MzE3MCwiZXhwIjoxNjc4ODM5NTcwfQ.DDkp-dkrmdFgaPgLhL46DA0LvtLPT9GP87R_S9qO68o";
-let DETAILMENU_URL = process.env.REACT_APP_API_BASEURL;
+let DETAILMENU_URL = process.env.REACT_APP_BASE_URL;
 export default function DetailMenu() {
   const { id } = useParams();
   const [data, setData] = useState();
@@ -50,7 +50,7 @@ export default function DetailMenu() {
               </div>
               <div className="col">
                 <h6>
-                  <a href="../Edit-Profile/detail-profile.html">Revo</a>
+                  <Link></Link>
                 </h6>
                 <h6 className="fw-bolder">Logout</h6>
               </div>
@@ -74,9 +74,9 @@ export default function DetailMenu() {
             </div>
           </div>
           <div className="d-flex justify-content-center">
-            <div className="row row-cols-3 mt-5 text-center">
-              <div className="col-md-12 card">
-                <img src={item.photo} alt="" className="img-fluid border rounded" />
+            <div className="row row-cols-3 mt-5">
+              <div className="col-md-12">
+                <img src={item.photo} alt="" className="border rounded" />
               </div>
             </div>
           </div>

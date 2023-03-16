@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import AuthChecker from "../Component/AuthChecker";
 import Home from '../Pages/Home';
 import AuthLogin from "../Pages/Auth/login"
 import AuthRegister from "../Pages/Auth/register"
 import AuthForgotPassword from "../Pages/Auth/forgotPassword";
-
 import MenuAdd from "../Pages/Menu/addMenu"
 import MenuDetail from "../Pages/Menu/detailMenu"
 import MenuEdit from "../Pages/Menu/editMenu"
@@ -14,7 +14,6 @@ import ChangePassword from "../Pages/Profile/changePassword";
 import RecipesProfile from "../Pages/Profile/recipesProfile";
 import BookmarkedProfile from "../Pages/Profile/bookmarkedProfile";
 
-import Cobaget from "../Pages/Home/cobaget";
 
 
 function App() {
@@ -23,7 +22,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Navigate to="home" replace="true" />} />
             <Route path="/home" element={<Home />} />
-                
+        
             <Route path="/auth/login" element={<AuthLogin />} />
             <Route path="/auth/register" element={<AuthRegister />} />
             <Route path="/auth/forgotPassword" element={<AuthForgotPassword />} />
@@ -35,9 +34,12 @@ function App() {
                 
             <Route path="/profile/detailProfile" element={<DetailProfile />} /> 
             <Route path="/profile/changePassword" element={<ChangePassword />} /> 
-            <Route path="/profile/recipesProfile" element={<RecipesProfile />} />
+            <Route path="/profile/recipesProfile" element={
+                <AuthChecker>
+                    <RecipesProfile />
+                </AuthChecker>
+                } />
             <Route path="/profile/bookmaredProfile" element={<BookmarkedProfile />} />
-            <Route path="/Home/coba" element={<Cobaget />} />
             
         </Routes>
         </BrowserRouter>

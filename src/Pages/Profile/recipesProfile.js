@@ -1,17 +1,29 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import FooterMenu from '../../Component/Footer';
 import NavbarDetail from '../../Component/NavbarDetail';
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Moment from "moment";
+import Localization from 'moment/locale/id'
+Moment.updateLocale('id', Localization)
 
-let token ="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwOGE1NmQyLWZlNWMtNDFlZi1hYmIwLWY5MmMxYzQ5OWQyMiIsImVtYWlsIjoicmV2b0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6InJldm8iLCJwaG90byI6bnVsbCwidmVyaWYiOjEsIm90cCI6IjY0NzIyMSIsImNyZWF0ZV9hdCI6IjIwMjMtMDItMjZUMDg6NTc6NTguODQ2WiIsImlhdCI6MTY3ODc1MzE3MCwiZXhwIjoxNjc4ODM5NTcwfQ.DDkp-dkrmdFgaPgLhL46DA0LvtLPT9GP87R_S9qO68o";
-let PROFILE_URL = process.env.REACT_APP_API_BASEURL;
+let token =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwOGE1NmQyLWZlNWMtNDFlZi1hYmIwLWY5MmMxYzQ5OWQyMiIsImVtYWlsIjoicmV2b0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6InJldm8iLCJwaG90byI6bnVsbCwidmVyaWYiOjEsIm90cCI6IjY0NzIyMSIsImNyZWF0ZV9hdCI6IjIwMjMtMDItMjZUMDg6NTc6NTguODQ2WiIsImlhdCI6MTY3ODg4MTAwNSwiZXhwIjoxNjc4OTY3NDA1fQ.zquI-_l7M8jH06qqMYyyFxRgE7AT9kWyYHVpmrLwGEk";
+let PROFILE_URL = process.env.REACT_APP_BASE_URL;
 export default function RecipesProfile() {
+    const tanggal = Moment().locale('id');
     const [selected, setSelected] = useState();
     const [data, setData] = useState();
     const [show, setShow] = useState(false);
+    const name = localStorage.getItem("name");
+    const navigate = useNavigate();
+    const logout = () => {
+        localStorage.clear();
+        window.location.reload(false);
+        navigate("/home");
+    };
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -70,14 +82,14 @@ export default function RecipesProfile() {
                                     <img src="" alt="" className="rounded-circle" style={{ width: "50px" }} />
                                 </div>
                                 <div className="col">
-                                    <h6><Link to={'/profile/detailProfile'} className='Link'>users</Link></h6>
-                                    <h6 className="fw-bolder"><Link to={''} className='Link'>Logout</Link></h6>
+                                    <h6><Link to={'/profile/detailProfile'} className='Link'>{name?name:"Users"}</Link></h6>
+                                    <h6>{name && <button  variant="text" className='border-0 bg-white text-start' varian onClick={()=>logout()}><strong>logout</strong></button>}</h6>
                                 </div>
                             </div>
                         </div>
                         <div className="col-6"></div>
                         <div className="col text-end">
-                            <h5>21 February 2023</h5>
+                            <h5>{ tanggal.format('LL')}</h5>
                         </div>
                     </div>
                 

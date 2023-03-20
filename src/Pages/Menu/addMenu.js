@@ -1,25 +1,19 @@
 import { useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addMenu } from "../../Storages/Actions/menu";
 import FooterMenu from "../../Component/Footer";
 import NavbarEdit from "../../Component/NavbarEdit";
-import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-let token =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwOGE1NmQyLWZlNWMtNDFlZi1hYmIwLWY5MmMxYzQ5OWQyMiIsImVtYWlsIjoicmV2b0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6InJldm8iLCJwaG90byI6bnVsbCwidmVyaWYiOjEsIm90cCI6IjY0NzIyMSIsImNyZWF0ZV9hdCI6IjIwMjMtMDItMjZUMDg6NTc6NTguODQ2WiIsImlhdCI6MTY3ODc1MzE3MCwiZXhwIjoxNjc4ODM5NTcwfQ.DDkp-dkrmdFgaPgLhL46DA0LvtLPT9GP87R_S9qO68o";
-let ADD_URL = process.env.REACT_APP_BASE_URL;
+
 export default function AddMenu() {
-  const navigate = useNavigate();
   const [inputData, setInputData] = useState({
     title: "",
     descriptions: "",
     category_id: "",
   });
   const [photo, setPhoto] = useState();
-  const toastSuccess = () =>
-    toast.success("Add menu successfully.", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
   const handleChange = (e) => {
     setInputData({
       ...inputData,
@@ -30,6 +24,12 @@ export default function AddMenu() {
     setPhoto(e.target.files[0]);
     console.log(e.target.files[0]);
   };
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const add_menu = useSelector((state) => state.add_menu);
+  
+  
   const postForm = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -38,21 +38,17 @@ export default function AddMenu() {
     formData.append("category_id", inputData.category_id);
     formData.append("photo", photo);
     console.log(formData);
-    axios
-      .post(`${ADD_URL}/recipes`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "Authorization": `${token}`,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        navigate("/profile/recipesProfile");
-      })
-      .catch((err) => {
-        toast.error("Failed:" + err.message);
-      });
+    dispatch(addMenu(formData, navigate));
   };
+
+  const toastDanger = () =>
+    toast.danger("Add Menu Fail", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  const toastSuccess = () =>
+    toast.success("Add Menu Success", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
   return (
     <div>
       <NavbarEdit />
@@ -132,7 +128,6 @@ export default function AddMenu() {
                 <button
                   type="submit"
                   className="btn btn-warning text-white w-100 p-2"
-                  onClick={toastSuccess}
                 >
                   Post
                 </button>
@@ -142,6 +137,8 @@ export default function AddMenu() {
           </div>
         </div>
       </form>
+      {add_menu.isLoading && toastSuccess()}
+      {add_menu.errorMessage && toastDanger()}
       <FooterMenu />
     </div>
   );

@@ -18,9 +18,9 @@ export default function NavbarMenu() {
     const name = localStorage.getItem("name")
     const navigate = useNavigate()
     const logout = () => {
-    localStorage.clear()
-    window.location.reload(false)
-    navigate('/home')
+        localStorage.clear()
+        window.location.reload(false)
+        navigate('/home')
     }
     return (
         <div>

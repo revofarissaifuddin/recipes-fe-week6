@@ -1,22 +1,21 @@
-
 const initialState = {
   data: null,
   isLoading: false,
 };
 
-const user = (state = initialState, action) => {
-  if (action.type === "USER_LOGIN_PENDING") {
+const add_menu = (state = initialState, action) => {
+  if (action.type === "ADD_MENU_PENDING") {
     return {
       ...state,
       isLoading: true,
     };
-  } else if (action.type === "USER_LOGIN_SUCCESS") {
+  } else if (action.type === "ADD_MENU_SUCCESS") {
     return {
       ...state,
-        data: action.payload,
-        isLoading: false,
+      data: action.payload,
+      isLoading: false,
     };
-  } else if (action.type === "USER_LOGIN_FAILED") {
+  } else if (action.type === "ADD_MENU_FAILED") {
     return {
       ...state,
       errorMessage: action.payload,
@@ -27,4 +26,4 @@ const user = (state = initialState, action) => {
   }
 };
 
-export default user;
+export default add_menu;

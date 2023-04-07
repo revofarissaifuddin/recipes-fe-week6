@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import NavbarLandingPage from "../../Component/NavbarLandingPage";
 import FooterMenu from "../../Component/Footer";
 import { Link } from "react-router-dom";
 import iconSearch from "../../Images/search.png";
 import homeImg from "../../Images/eggsanwich.png";
-// import axios from "axios";
+import banana from "../../Images/banana.png";
+import boomchiken from "../../Images/boomchicken.png"
+import Chikenkare from "../../Images/Chikenkare.png"
 
 export default function Home() {
-  // const [data, setData] = useState;
   return (
     <div>
       <NavbarLandingPage />
@@ -72,7 +73,7 @@ export default function Home() {
             <div className="row">
               <div className="d-flex justify-content-start pt-5 mt-5">
                 <img
-                  src="../images/img-2.png"
+                  src={banana}
                   alt=""
                   className="img-fluid border rounded"
                   style={{ maxWidth: "25vw", maxHeight: " 25vw" }}
@@ -120,7 +121,7 @@ export default function Home() {
             <div className="row">
               <div className="d-flex justify-content-start pt-5 mt-5">
                 <img
-                  src="../images/img-2.png"
+                  src={boomchiken}
                   alt=""
                   className="img-fluid border rounded"
                   style={{ maxWidth: "25vw", maxHeight: " 25vw" }}
@@ -167,7 +168,7 @@ export default function Home() {
           <div className="col-3">
             <div className="card ms-5" style={{ maxWidth: "30rem" }}>
               <img
-                src="../images/Chiken kare.png"
+                src={Chikenkare}
                 className="card-img-top"
                 alt="..."
               />
@@ -182,7 +183,7 @@ export default function Home() {
           <div className="col-3">
             <div className="card ms-5" style={{ maxWidth: "30rem" }}>
               <img
-                src="../images/boomchicken.png"
+                src={boomchiken}
                 className="card-img-top"
                 alt="..."
               />
@@ -197,7 +198,7 @@ export default function Home() {
           <div className="col-3">
             <div className="card ms-5" style={{ maxWidth: "30rem" }}>
               <img
-                src="../images/banana.png"
+                src={banana}
                 className="card-img-top"
                 alt="..."
               />

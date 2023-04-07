@@ -3,7 +3,18 @@ import { Link } from "react-router-dom";
 import FooterMenu from "../../Component/Footer";
 import NavbarMenu from "../../Component/NavbarMenu";
 import axios from "axios";
-
+import avatar from "../../Images/user.png";
+function Avatar() {
+  return (
+    <img
+      className="avatar img-fluid rounded-circle align-items-center img-navbarMenu"
+      src={avatar}
+      alt="avatar"
+      width={100}
+      height={100}
+    />
+  );
+}
 export default function SearchMenu() {
   const [searchMenu, setSearchMenu] = useState("");
   const [sortMenu] = useState("DESC");
@@ -38,21 +49,6 @@ export default function SearchMenu() {
         console.log(err);
       });
   };
-
-  /* // pageination
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = 5;
-  // Get current posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = data.map(indexOfFirstPost, indexOfLastPost);
-  const npage = Math.ceil(data.length / postsPerPage);
-  const number = [...Array(npage + 1).keys()].slice(1);
-  
-  // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  // destructering */
-
 
   return (
     <div>
@@ -178,12 +174,12 @@ export default function SearchMenu() {
                           <div className="col-4 mt-3">
                             <div className="row">
                               <div className="col-3">
-                                <img
-                                  src="./user.png"
-                                  alt=""
+                                <div
                                   className="rounded-circle align-items-center"
                                   style={{ width: "50px" }}
-                                />
+                                >
+                                  <Avatar />
+                                </div>
                               </div>
                               <div className="col-4">
                                 <h6 className="text-center mt-3 ms-3 w-25">
@@ -217,8 +213,6 @@ export default function SearchMenu() {
             </ul>
           </nav>
         </div>
-
-        
       </div>
       <FooterMenu />
     </div>

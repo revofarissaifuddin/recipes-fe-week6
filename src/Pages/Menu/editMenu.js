@@ -54,7 +54,7 @@ export default function EditMenu() {
       <NavbarEdit />
       <ToastContainer />
       <div className="container">
-        {(editmenu||updateMenu).data?.map((item, index) => (
+        {(editmenu || updateMenu).data?.map((item, index) => (
           <div key={index} className="container-fluid">
             <form onSubmit={postForm}>
               <div className="container mt-5">
@@ -138,10 +138,11 @@ export default function EditMenu() {
                     <button
                       type="submit"
                       className="btn btn-warning text-white w-100"
-                      
                     >
                       Update
                     </button>
+                    {updateMenu.isLoading && toastSuccess()}
+                    {updateMenu.errorMessage}
                   </div>
                   <div className="col"></div>
                 </div>

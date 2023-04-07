@@ -1,11 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {detailMenu} from"../../Storages/Actions/menu"
 import FooterMenu from "../../Component/Footer";
 import NavbarDetail from "../../Component/NavbarDetail";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Moment from "moment";
-
+import avatar from "../../Images/user.png";
+function Avatar() {
+  return (
+    <img
+      className="avatar img-fluid rounded-circle align-items-center img-navbarMenu"
+      src={avatar}
+      alt="avatar"
+      width={100}
+      height={100}
+    />
+  );
+}
 export default function DetailMenu() {
   const { id } = useParams();
   const name = localStorage.getItem("name");
@@ -20,8 +31,8 @@ export default function DetailMenu() {
   };
 
   useEffect(() => {
-    dispatch(detailMenu(navigate,id));
-  }, []);
+    dispatch(detailMenu(navigate, id));
+  }, [dispatch, id, navigate]);
 
   return (
     <div>
@@ -31,12 +42,7 @@ export default function DetailMenu() {
           <div className="col ">
             <div className="row">
               <div className="card col-3 border-start border-3 border-warning ">
-                <img
-                  src=""
-                  alt=""
-                  className="rounded-circle"
-                  style={{ width: "50px" }}
-                />
+                <Avatar />
               </div>
               <div className="col">
                 <h6>
@@ -139,12 +145,7 @@ export default function DetailMenu() {
           <div className="col ">
             <div className="row">
               <div className="col-3 ">
-                <img
-                  src="../../images/BiodataR.jpg"
-                  alt=""
-                  className="rounded-circle img-fluid"
-                  style={{ width: "50px" }}
-                />
+                <Avatar />
               </div>
               <div className="col">
                 <h6>
@@ -166,12 +167,7 @@ export default function DetailMenu() {
           <div className="col ">
             <div className="row">
               <div className="col-3 ">
-                <img
-                  src="../../images/BiodataR.jpg"
-                  alt=""
-                  className="rounded-circle img-fluid"
-                  style={{ width: "50px" }}
-                />
+                <Avatar />
               </div>
               <div className="col">
                 <h6>

@@ -8,7 +8,19 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Moment from "moment";
 import Localization from "moment/locale/id";
+import avatar from "../../Images/user.png";
 Moment.updateLocale("id", Localization);
+function Avatar() {
+  return (
+    <img
+      className="avatar img-fluid rounded-circle align-items-center img-navbarMenu"
+      src={avatar}
+      alt="avatar"
+      width={100}
+      height={100}
+    />
+  );
+}
 
 export default function RecipesProfile() {
   const tanggal = Moment().locale("id");
@@ -40,12 +52,12 @@ export default function RecipesProfile() {
 
   useEffect(() => {
     dispatch(getMenu());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getMenu());
     handleClose();
-  }, [delete_menu.data]);
+  }, [delete_menu.data, dispatch]);
   
   const deleteData = (id) => {
     dispatch(deleteMenu(id));
@@ -59,12 +71,7 @@ export default function RecipesProfile() {
             <div className="col ">
               <div className="row">
                 <div className="col-3 border-start border-3 border-warning ">
-                  <img
-                    src=""
-                    alt=""
-                    className="rounded-circle"
-                    style={{ width: "50px" }}
-                  />
+                  <Avatar />
                 </div>
                 <div className="col">
                   <h6>

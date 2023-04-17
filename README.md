@@ -1,74 +1,55 @@
-# Getting Started with Create React App
+# WEB APP Recipes
+Recipes app merupakan aplikasi berbasis web yang menampilkan berbagai recipes makanan. Recipe app terdapat beberapa fitur dimana user atau pengguna dapat mencari recipe masakan, mendaftar sebagai user, menambahkan recipe, menghapus recipe, serta update recipe. Aplikasi Web recipes dibangun menggunakan axios,react-bootstrap,redux,react js, PostgreSql dan Express JS.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-
+## Build Packages NodeJS
+```bash
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.3.4",
+    "bootstrap": "^5.2.3",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.8.2",
+    "react-scripts": "5.0.1",
+    "react-toastify": "^9.1.1",
+    "react-toastify-redux": "^1.0.0-rc.2",
+    "redux": "^4.2.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.4.2",
+    "sass": "^1.58.3",
+    "web-vitals": "^2.1.4"
+```
 ## Link APP
 - [Visit App](https://recipes-fe-week6.vercel.app/home)
+## UI WEB Recipes
+| Home Page                                                |
+| --------------------------------------------------------- | 
+![Home Page](/public/HomePage.png?raw=true "Home Page")
+| Search Page                                                |
+|| 
+![Search Page](/public/SearchPage.png?raw=true "Search Page")
+| Detail Page                                                |
+|| 
+![Detail Page](/public/DetaiPage.png?raw=true "Detail Page")
+| Login Page                                                |
+|| 
+![Login Page](/public/LoginPage.png?raw=true "Login Page")
+| Register Page                                                |
+|| 
+![Register Page](/public/RegisterPage.png?raw=true "Register Page")
+| Send Otp Page                                                |
+|| 
+![Send Otp Page](/public/SendOtp.png?raw=true "Send Otp Page")
+| Menu Profile Otp Page                                                |
+|| 
+![Menu Profile Page](/public/ProfileRecipes.png?raw=true "Menu Profile Page")
+| Add Menu Otp Page                                                |
+|| 
+![Add Menu Page](/public/AddPage.png?raw=true "Add Menu Page")
+| Edit Menu Otp Page                                                |
+|| 
+![Edit Menu Page](/public/EditPage.png?raw=true "Edit Menu Page")

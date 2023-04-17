@@ -23,6 +23,9 @@ Recipes app merupakan aplikasi berbasis web yang menampilkan berbagai recipes ma
     "sass": "^1.58.3",
     "web-vitals": "^2.1.4"
 ```
+## Link Backend
+- [Visit App](https://github.com/revofarissaifuddin/pijar_Backend_TG_Week3Backup)
+
 ## Link APP
 - [Visit App](https://recipes-fe-week6.vercel.app/home)
 ## UI WEB Recipes

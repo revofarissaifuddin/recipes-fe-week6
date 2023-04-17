@@ -6,11 +6,10 @@ import axios from "axios";
 // import Button from "react-bootstrap/Button";
 // import Modal from "react-bootstrap/Modal";
 
-let token =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwOGE1NmQyLWZlNWMtNDFlZi1hYmIwLWY5MmMxYzQ5OWQyMiIsImVtYWlsIjoicmV2b0BnbWFpbC5jb20iLCJmdWxsbmFtZSI6InJldm8iLCJwaG90byI6bnVsbCwidmVyaWYiOjEsIm90cCI6IjY0NzIyMSIsImNyZWF0ZV9hdCI6IjIwMjMtMDItMjZUMDg6NTc6NTguODQ2WiIsImlhdCI6MTY3ODc1MzE3MCwiZXhwIjoxNjc4ODM5NTcwfQ.DDkp-dkrmdFgaPgLhL46DA0LvtLPT9GP87R_S9qO68o";
 let PROFILE_URL = process.env.REACT_APP_BASE_URL;
 export default function BookmarkedProfile() {
     const [data, setData] = useState();
+    const token = localStorage.getItem("token");
     useEffect(() => {
         getData();
     }, []);

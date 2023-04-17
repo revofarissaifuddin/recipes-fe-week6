@@ -39,7 +39,7 @@ export default function SearchMenu() {
   const newRecipes = () => {
     axios
       .get(
-        `${process.env.REACT_APP_BASE_URL}/recipes/all-recipe?sort=${sortMenu}`
+        `${process.env.REACT_APP_BASE_URL}/recipes/all-recipe?sort=${sortMenu}&limit=5`
       )
       .then((res) => {
         console.log(res);

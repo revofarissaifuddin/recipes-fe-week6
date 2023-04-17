@@ -141,8 +141,8 @@ export const deleteMenu = (id) => async (dispatch) => {
       `${process.env.REACT_APP_BASE_URL}/recipes/my-recipe/${id}`,
       headers
     );
-    const menu = result.data;
-    dispatch({ type: "DELETE_MENU_SUCCESS", payload: menu });
+    const delete_menu = result.data;
+    dispatch({ type: "DELETE_MENU_SUCCESS", payload: delete_menu });
   } catch (error) {
     dispatch({
       type: "DELETE_MENU_FAILED",
@@ -153,11 +153,11 @@ export const deleteMenu = (id) => async (dispatch) => {
   }
 };
 
-export const getSearchMenu = () => async (dispatch) => {
+export const getSearchMenu = (searchMenu) => async (dispatch) => {
   try {
     dispatch({ type: "GET_SEARCH_MENU_PENDING" });
     const result = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}/recipes/all-recipe`
+      `${process.env.REACT_APP_BASE_URL}/recipes/all-recipe?search=${searchMenu}`
     );
     const search = result.data.data;
     dispatch({ type: "GET_SEARCH_MENU_SUCCESS", payload: search });

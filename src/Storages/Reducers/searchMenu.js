@@ -5,18 +5,18 @@ const initialState = {
 };
 
 const search_menu = (state = initialState, action) => {
-  if (action.type === "GET_RECIPES_MENU_PROFILE_PENDING") {
+  if (action.type === "GET_SEARCH_PENDING") {
     return {
       ...state,
       isLoading: true,
     };
-  } else if (action.type === "GET_RECIPES_MENU_PROFILE_SUCCESS") {
+  } else if (action.type === "GET_SEARCH_SUCCESS") {
     return {
       ...state,
       data: action.payload,
       isLoading: false,
     };
-  } else if (action.type === "GET_RECIPES_MENU_PROFILE_FAILED") {
+  } else if (action.type === "GET_SEARCH_FAILED") {
     return {
       ...state,
       errorMessage: action.payload,

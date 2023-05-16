@@ -7,7 +7,8 @@ import homeImg from "../../Images/eggsanwich.png";
 import banana from "../../Images/banana.png";
 import boomchiken from "../../Images/boomchicken.png"
 import Chikenkare from "../../Images/Chikenkare.png"
-
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 export default function Home() {
   return (
     <div>
@@ -164,14 +165,10 @@ export default function Home() {
             Popular Recipe
           </h2>
         </div>
-        <div className="row d-flex justify-content-around">
-          <div className="col-3">
+        <Row>
+          <Col sm>
             <div className="card ms-5" style={{ maxWidth: "30rem" }}>
-              <img
-                src={Chikenkare}
-                className="card-img-top"
-                alt="..."
-              />
+              <img src={Chikenkare} className="card-img-top" alt="..." />
               <p
                 className="card-text z-2 w-25 ms-3"
                 style={{ marginTop: "-50px" }}
@@ -179,14 +176,10 @@ export default function Home() {
                 Chiken Kare
               </p>
             </div>
-          </div>
-          <div className="col-3">
+          </Col>
+          <Col sm>
             <div className="card ms-5" style={{ maxWidth: "30rem" }}>
-              <img
-                src={boomchiken}
-                className="card-img-top"
-                alt="..."
-              />
+              <img src={boomchiken} className="card-img-top" alt="..." />
               <p
                 className="card-text z-2 w-25 ms-3"
                 style={{ marginTop: "-50px" }}
@@ -194,14 +187,10 @@ export default function Home() {
                 Bomb Chiken
               </p>
             </div>
-          </div>
-          <div className="col-3">
+          </Col>
+          <Col sm>
             <div className="card ms-5" style={{ maxWidth: "30rem" }}>
-              <img
-                src={banana}
-                className="card-img-top"
-                alt="..."
-              />
+              <img src={banana} className="card-img-top" alt="..." />
               <p
                 className="card-text z-2 w-25 ms-3"
                 style={{ marginTop: "-75px" }}
@@ -209,8 +198,8 @@ export default function Home() {
                 Banana Smothie Pop
               </p>
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </section>
       <FooterMenu />
     </div>

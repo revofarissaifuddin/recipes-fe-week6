@@ -8,19 +8,18 @@ Recipes app merupakan aplikasi berbasis web yang menampilkan berbagai recipes ma
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.4",
     "bootstrap": "^5.2.3",
-    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.8.2",
+    "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
-    "react-toastify": "^9.1.1",
-    "react-toastify-redux": "^1.0.0-rc.2",
+    "react-toastify": "^9.1.2",
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.2",
-    "sass": "^1.58.3",
+    "sass": "^1.59.3",
+    "swiper": "^9.1.1",
     "web-vitals": "^2.1.4"
 ```
 ## Link Backend
@@ -28,6 +27,7 @@ Recipes app merupakan aplikasi berbasis web yang menampilkan berbagai recipes ma
 
 ## Link APP
 - [Visit App](https://recipes-fe-week6.vercel.app/home)
+- user example (email: revfs@gmail.com pass:1234)
 ## UI WEB Recipes
 | Home Page                                                |
 | --------------------------------------------------------- | 

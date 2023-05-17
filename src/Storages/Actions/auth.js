@@ -4,7 +4,7 @@ export const loginUser = (data, navigate) => async (dispatch) => {
   try {
     dispatch({ type: "USER_LOGIN_PENDING" });
     const result = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}/auth/login`,
+      process.env.REACT_APP_BASE_URL+"/auth/login",
       data
     );
     const user = result.data.data;
@@ -24,7 +24,7 @@ export const regUser = (data, navigate) => async (dispatch) => {
   try {
     dispatch({ type: "USER_REGISTER_PENDING" });
     const result = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}/auth/register`,
+      process.env.REACT_APP_BASE_URL+"/auth/register",
       data
     );
     const user = result.data.data;

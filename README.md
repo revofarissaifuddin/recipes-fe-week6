@@ -22,9 +22,6 @@ Recipes app merupakan aplikasi berbasis web yang menampilkan berbagai recipes ma
     "swiper": "^9.1.1",
     "web-vitals": "^2.1.4"
 ```
-## Link Backend
-- [Visit App](https://github.com/revofarissaifuddin/pijar_Backend_TG_Week3Backup)
-
 ## Link APP
 - [Visit App](https://recipes-fe-week6.vercel.app/home)
 - user example (email: revfs@gmail.com pass:1234)
